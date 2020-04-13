@@ -8,7 +8,8 @@
 
 <script>
 import EventCard from '@/components/EventCard.vue'
-import EventService from '@/services/EventService'
+// import EventService from '@/services/EventService'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -20,11 +21,8 @@ export default {
     }
   },
   created () {
-    EventService.getEvents()
-      .then(response => {
-        this.events = response.data
-      })
-      .catch(error => console.error(error))
-  }
+    this.$store.dispatch('fetchEvents')
+  },
+  computed: mapState(['events'])
 }
 </script>

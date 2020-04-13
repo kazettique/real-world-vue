@@ -14,16 +14,14 @@ export default new Vuex.Store({
       { id: 3, text: '...', done: true },
       { id: 4, text: '...', done: false }
     ],
-    events: [
-      { id: 1, title: '...', organizer: '...' },
-      { id: 2, title: '...', organizer: '...' },
-      { id: 3, title: '...', organizer: '...' },
-      { id: 4, title: '...', organizer: '...' }
-    ]
+    events: []
   },
   mutations: {
     ADD_EVENT (state, event) {
       state.events.push(event)
+    },
+    SET_EVENTS (state, events) {
+      state.events = events
     }
   },
   actions: {
@@ -31,6 +29,14 @@ export default new Vuex.Store({
       return EventService.postEvent(event).then(() => {
         commit('ADD_EVENT', event)
       })
+    },
+    fetchEvents ({ commit }) {
+      EventService.getEvents()
+        .then(response => {
+          commit('SET_EVENTS', response.data)
+          // this.events = response.data
+        })
+        .catch(error => console.error(error))
     }
   },
   modules: {

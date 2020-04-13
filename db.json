@@ -44,6 +44,48 @@
       "date": "2019-02-02T23:27:00.000Z",
       "time": "1:00",
       "attendees": []
+    },
+    {
+      "id": 887466,
+      "category": "education",
+      "organizer": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "title": "test5566",
+      "description": "desc5566",
+      "location": "home",
+      "date": "2020-04-02T13:14:00.000Z",
+      "time": "2:00",
+      "attendees": []
+    },
+    {
+      "id": 1520607,
+      "category": "housing",
+      "organizer": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "title": "tiny house!!",
+      "description": "i love minimalism",
+      "location": "Japan",
+      "date": "2020-04-01T13:31:00.000Z",
+      "time": "1:00",
+      "attendees": []
+    },
+    {
+      "id": 3470843,
+      "category": "nature",
+      "organizer": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "title": "planting trees 🌲",
+      "description": "fdsaf",
+      "location": "forest",
+      "date": "2020-04-02T13:39:00.000Z",
+      "time": "2:00",
+      "attendees": []
     }
   ]
 }

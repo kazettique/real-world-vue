@@ -3,7 +3,8 @@ import EventService from '@/services/EventService'
 export const state = {
   events: [],
   total: 0,
-  event: {}
+  event: {},
+  perPage: 3
 }
 
 export const namespaced = true
@@ -15,8 +16,8 @@ export const mutations = {
   SET_EVENTS (state, events) {
     state.events = events
   },
-  GET_TOTAL_EVENTS_COUNTS (state, total) {
-    state.total = total
+  SET_EVENTS_TOTAL (state, eventsTotal) {
+    state.eventsTotal = eventsTotal
   },
   SET_EVENT (state, event) {
     state.event = event
@@ -42,11 +43,11 @@ export const actions = {
         throw error
       })
   },
-  fetchEvents ({ commit, dispatch }, { perPage, page }) {
-    EventService.getEvents(perPage, page)
+  fetchEvents ({ commit, dispatch, state }, { page }) {
+    return EventService.getEvents(state.perPage, page)
       .then(response => {
+        commit('SET_EVENTS_TOTAL', parseInt(response.headers['x-total-count']))
         commit('SET_EVENTS', response.data)
-        commit('GET_TOTAL_EVENTS_COUNTS', Number(response.headers['x-total-count']))
         // this.events = response.data
       })
       .catch(error => {
@@ -57,22 +58,20 @@ export const actions = {
         dispatch('notification/add', notification, { root: true })
       })
   },
-  fetchEvent ({ commit, getters, dispatch }, id) {
+  fetchEvent ({ commit, getters }, id) {
+    if (id === state.event.id) {
+      return state.event
+    }
     const event = getters.getEventById(id)
+
     if (event) {
       commit('SET_EVENT', event)
+      return event
     } else {
       return EventService.getEvent(id)
         .then(response => {
           commit('SET_EVENT', response.data)
           return response.data
-        })
-        .catch(error => {
-          const notification = {
-            type: 'error',
-            message: 'There was a problem fetching event: ' + error.message
-          }
-          dispatch('notification/add', notification, { root: true })
         })
     }
   }

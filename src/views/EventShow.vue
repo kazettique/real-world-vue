@@ -33,26 +33,7 @@ export default {
       type: Object,
       required: true
     }
-  },
-  // beforeRouteEnter (routeTo, routeFrom, next) {
-  //   NProgress.start()
-  //   store.dispatch('event/fetchEvent', routeTo.params.id).then(() => {
-  //     NProgress.done()
-  //     next()
-  //   })
-  // },
-  data () {
-    return {
-      // event: {}
-    }
   }
-  // created () {
-  //   this.fetchEvent(this.id)
-  // },
-  // computed: mapState({
-  //   event: state => state.event.event
-  // })
-  // methods: mapActions('event', ['fetchEvent'])
 }
 </script>
 

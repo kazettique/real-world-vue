@@ -12,16 +12,10 @@
     <p>{{ event.description }}</p>
     <h2>
       Attendees
-      <span class="badge -fill-gradient">{{
-        event.attendees ? event.attendees.length : 0
-      }}</span>
+      <span class="badge -fill-gradient">{{ event.attendees ? event.attendees.length : 0 }}</span>
     </h2>
     <ul class="list-group">
-      <li
-        v-for="(attendee, index) in event.attendees"
-        :key="index"
-        class="list-item"
-      >
+      <li v-for="(attendee, index) in event.attendees" :key="index" class="list-item">
         <b>{{ attendee.name }}</b>
       </li>
     </ul>
@@ -29,23 +23,31 @@
 </template>
 
 <script>
-// import EventService from '@/services/EventService'
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
+// import NProgress from 'nprogress'
+// import store from '@/store'
 
 export default {
   props: ['id'],
+  // beforeRouteEnter (routeTo, routeFrom, next) {
+  //   NProgress.start()
+  //   store.dispatch('event/fetchEvent', routeTo.params.id).then(() => {
+  //     NProgress.done()
+  //     next()
+  //   })
+  // },
   data () {
     return {
       // event: {}
     }
   },
-  created () {
-    this.fetchEvent(this.id)
-  },
+  // created () {
+  //   this.fetchEvent(this.id)
+  // },
   computed: mapState({
     event: state => state.event.event
-  }),
-  methods: mapActions('event', ['fetchEvent'])
+  })
+  // methods: mapActions('event', ['fetchEvent'])
 }
 </script>
 

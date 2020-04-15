@@ -3,7 +3,7 @@ import EventService from '@/services/EventService'
 export const state = {
   events: [],
   total: 0,
-  event: { }
+  event: {}
 }
 
 export const namespaced = true
@@ -25,21 +25,22 @@ export const mutations = {
 
 export const actions = {
   createEvent ({ commit, dispatch }, event) {
-    return EventService.postEvent(event).then(() => {
-      commit('ADD_EVENT', event)
-      const notification = {
-        type: 'success',
-        message: 'Your event has been created!'
-      }
-      dispatch('notification/add', notification, { root: true })
-    }).catch(error => {
-      const notification = {
-        type: 'error',
-        message: 'There was problem creating our event: ' + error.message
-      }
-      dispatch('notification/add', notification, { root: true })
-      throw error
-    })
+    return EventService.postEvent(event)
+      .then(() => {
+        commit('ADD_EVENT', event)
+        const notification = {
+          type: 'success',
+          message: 'Your event has been created!'
+        }
+        dispatch('notification/add', notification, { root: true })
+      }).catch(error => {
+        const notification = {
+          type: 'error',
+          message: 'There was problem creating our event: ' + error.message
+        }
+        dispatch('notification/add', notification, { root: true })
+        throw error
+      })
   },
   fetchEvents ({ commit, dispatch }, { perPage, page }) {
     EventService.getEvents(perPage, page)

@@ -231,6 +231,38 @@
       "date": "",
       "time": "5:00",
       "attendees": []
+    },
+    {
+      "id": 6956285,
+      "category": "animal welfare",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
+      "title": "333",
+      "description": "111",
+      "location": "222",
+      "date": "2020-04-01T06:30:00.000Z",
+      "time": "",
+      "attendees": []
+    },
+    {
+      "id": 9771988,
+      "category": "animal welfare",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
+      "title": "rr",
+      "description": "rrr",
+      "location": "rrr",
+      "date": "2020-04-01T07:26:00.000Z",
+      "time": "3:00",
+      "attendees": []
     }
   ]
 }

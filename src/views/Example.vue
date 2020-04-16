@@ -36,7 +36,7 @@ export default {
     submit () {
       this.$v.$touch()
       if (!this.$v.$invalid) {
-        console.log('Form submitted', this.email)
+        console.log('Form submitted: ', this.email)
       }
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="$listeners" v-bind="$attrs" class="button" :class="buttonClass">
+    <button v-on="$listeners" v-bind="$attrs" class="button" :class="buttonClass">
       <slot />
     </button>
   </div>

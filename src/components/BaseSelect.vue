@@ -1,12 +1,16 @@
 <template>
   <div>
     <label v-if="label">{{ label }}</label>
-    <select :value="value" @change="updateValue" v-bind="$attrs" v-on="$listeners">
-      <option v-for="option in options" :key="option.id" :selected="option === value">{{ option }}</option>
+    <select :value="value" @change="updateValue">
+      <option
+        v-for="option in options"
+        :value="option"
+        :key="option"
+        :selected="option === value"
+      >{{ option }}</option>
     </select>
   </div>
 </template>
-
 <script>
 import { formFieldMixin } from '../mixins/formFieldMixin'
 export default {
@@ -17,7 +21,11 @@ export default {
       required: true
     }
   }
+  // watch: {
+  //   value: function (oldValue, newValue) {
+  //     console.log(oldValue)
+  //     console.log(newValue)
+  //   }
+  // }
 }
 </script>
-
-<style lang="scss" scoped></style>

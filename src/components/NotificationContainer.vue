@@ -16,15 +16,15 @@ export default {
   components: {
     NotificationBar
   },
-  // notification --> module name
-  // notifications --> vuex state
   computed: mapState('notification', ['notifications'])
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .notification-container {
   position: fixed;
   bottom: 0;
+  right: 0;
+  padding-right: 40px;
 }
 </style>
